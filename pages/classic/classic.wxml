@@ -1,0 +1,5 @@
+<view>
+	<v-like isLike="{{}}" count="{{classic.fav_nums}}" />
+	<v-movie/>
+</view>
+
