@@ -26,13 +26,18 @@ Component({
    */
   methods: {
     onLike () {
-      console.log(this)
       let isLike = this.properties.isLike
       let count = this.properties.count
       count = isLike? count - 1: count + 1
       this.setData({
         count: count,
         isLike: !isLike
+      })
+
+      let behavior = this.properties.isLike ? 'like': 'cacle'
+      //子组件向父组件传递数据
+      this.triggerEvent('like',{
+        behavior: behavior
       })
     }
   }

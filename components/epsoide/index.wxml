@@ -1,0 +1,13 @@
+<wxs module="index" src="./getIndex.wxs" />
+<view class="container">
+	<view class="index-container">
+		<text class="plain">NO.</text>
+		<text class="index">{{index.getIndex(_index)}}</text>
+		<view class="underline" />
+	</view>
+	<view class="date-container">
+		<text class="month">{{month}}</text>
+		<text class="year">{{year}}</text>
+	</view>
+</view>
+

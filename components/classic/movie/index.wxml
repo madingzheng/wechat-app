@@ -1,2 +1,6 @@
-
+<view class="container">
+	<image class="image-title" src="{{imagUrl}}" />
+	<image class="tag-img" src="{{movieImage}}" />
+	<text>{{content}}</text>
+</view>
 

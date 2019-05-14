@@ -1,7 +1,10 @@
 // pages/classic/classic.js
-import {ClassicModel} from '../../models/classic'
+import { ClassicModel } from '../../models/classic'
+import { LikeModel } from '../../models/like'
 
-let classicModel = new ClassicModel()
+const classicModel = new ClassicModel()
+const likeModel = new LikeModel()
+
 Page({
 
   /**
@@ -20,6 +23,13 @@ Page({
         classic: res
       })
     })
+  },
+
+  onLike: function (event) {
+    let behavior = event.detail.behavior
+    let arrId = this.data.classic.id
+    let type = this.data.classic.type
+    likeModel.like(behavior, arrId, type)
   },
 
   /**

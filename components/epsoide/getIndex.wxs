@@ -1,0 +1,8 @@
+var getIndex = function(index) {
+  if (index
+  < 10) {
+      index = '0' + index
+    }
+    return index
+}
+module.exports.getIndex = getIndex
