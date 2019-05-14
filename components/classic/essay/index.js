@@ -1,7 +1,9 @@
+// components/classic/essay/index.js
 import {classBeh} from '../classic-beh'
 
 Component({
   behaviors: [classBeh],
+
   /**
    * 组件的属性列表
    */
@@ -13,7 +15,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    movieImage: './images/movie@tag.png'
+    essayImage: './images/essay@tag.png'
   },
 
   /**

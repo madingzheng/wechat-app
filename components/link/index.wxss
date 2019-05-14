@@ -7,12 +7,12 @@
   width: 90rpx;
 }
 
-.container image {
+.image {
   width: 32rpx;
   height: 28rpx;
 }
 
-.container text {
+.count {
   font-size: 24rpx;
   line-height: 24rpx;
   color: #bbbbbb;

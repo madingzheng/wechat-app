@@ -19,7 +19,7 @@
   bottom: 58rpx;
 }
 
-text {
+.content {
   font-size: 36rpx;
   max-width: 550rpx;
 }

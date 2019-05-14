@@ -11,7 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    first: false,
+    later: true,
+    laterIndex: 0
   },
 
   /**
@@ -20,7 +22,8 @@ Page({
   onLoad: function (options) {
     classicModel.getLatest((res) => {
       this.setData({
-        classic: res
+        classic: res,
+        laterIndex: res.index
       })
     })
   },
@@ -30,6 +33,25 @@ Page({
     let arrId = this.data.classic.id
     let type = this.data.classic.type
     likeModel.like(behavior, arrId, type)
+  },
+
+  onPrevious() {
+    this._updateClassic('previous')
+  },
+
+  onNext() {
+    this._updateClassic('next')
+  },
+
+  _updateClassic(nextOrPrevious) {
+    let index = this.data.classic.index
+    classicModel.getClassic(index, nextOrPrevious, (res) => {
+      this.setData({
+        classic: res,
+        later: classicModel.islatest(res.index, this.data.laterIndex),
+        first: classicModel.isFirst(res.index)
+      })
+    })
   },
 
   /**

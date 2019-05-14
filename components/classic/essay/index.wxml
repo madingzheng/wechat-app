@@ -1,6 +1,6 @@
 <view class="container">
 	<image class="image-title" src="{{imagUrl}}" />
-	<image class="tag-img" src="{{movieImage}}" />
+	<image class="tag-img" src="{{essayImage}}" />
 	<text class="content">{{content}}</text>
 </view>
 
