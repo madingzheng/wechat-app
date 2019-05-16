@@ -4,11 +4,30 @@
 		<v-like
 		 class="like"
 		 bind:like="onLike"
-		 isLike="{{classic.like_status}}"
-		 count="{{classic.fav_nums}}"
+		 isLike="{{likeStatus}}"
+		 count="{{likeNums}}"
 		/>
 	</view>
-	<v-movie class="move" imagUrl="{{classic.image}}" content="{{classic.content}}" />
+	<v-movie
+	 wx:if="{{classic.type === 100}}"
+	 class="move"
+	 imagUrl="{{classic.image}}"
+	 content="{{classic.content}}"
+	/>
+	<v-music
+	 wx:if="{{classic.type === 200}}"
+	 class="move"
+	 imagUrl="{{classic.image}}"
+	 content="{{classic.content}}"
+	 src="{{classic.url}}"
+	 title="{{classic.title}}"
+	/>
+	<v-essay
+	 wx:if="{{classic.type === 300}}"
+	 class="move"
+	 imagUrl="{{classic.image}}"
+	 content="{{classic.content}}"
+	/>
 	<v-nav
 	 class="nav"
 	 content="{{classic.title}}"

@@ -13,7 +13,9 @@ Page({
   data: {
     first: false,
     later: true,
-    laterIndex: 0
+    laterIndex: 0,
+    likeNums: 0,
+    likeStatus: false
   },
 
   /**
@@ -23,7 +25,9 @@ Page({
     classicModel.getLatest((res) => {
       this.setData({
         classic: res,
-        laterIndex: res.index
+        laterIndex: res.index,
+        likeNums: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
@@ -35,21 +39,41 @@ Page({
     likeModel.like(behavior, arrId, type)
   },
 
+  /**
+   * 下一期
+   */
   onPrevious() {
     this._updateClassic('previous')
   },
 
+  /**
+   * 上一期
+   */
   onNext() {
     this._updateClassic('next')
   },
 
+  /**
+   * 更新classic数据
+   * @param {下一期或者上一期} nextOrPrevious 
+   */
   _updateClassic(nextOrPrevious) {
     let index = this.data.classic.index
     classicModel.getClassic(index, nextOrPrevious, (res) => {
+      this._getLikeStatus(res.type, res.id)
       this.setData({
         classic: res,
         later: classicModel.islatest(res.index, this.data.laterIndex),
         first: classicModel.isFirst(res.index)
+      })
+    })
+  },
+
+  _getLikeStatus(type, arrId) {
+    likeModel.getClassicLikeStatus(type, arrId, (res) => {
+      this.setData({
+        likeNums: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },

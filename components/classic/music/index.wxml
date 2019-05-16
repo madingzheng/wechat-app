@@ -1,7 +1,18 @@
-<view class="container">
-	<image src="{{imagUrl}}" />
-	<image src="{{playSrc}}" />
-	<image src="{{tag}}" />
+<view class="container" hidden="{{hidden}}">
+	<image class="{{isPlaying ? 'classic-img rotation' : 'classic-img'}}" src="{{imagUrl}}" />
+	<image
+	 wx:if="{{isPlaying}}"
+	 bind:tap="onPause"
+	 class="player-img"
+	 src="{{pauseSrc}}"
+	/>
+	<image
+	 bind:tap="onPlay"
+	 wx:else
+	 class="player-img"
+	 src="{{playSrc}}"
+	/>
+	<image class="tag" src="{{tag}}" />
 	<text class="content">{{content}}</text>
 </view>
 

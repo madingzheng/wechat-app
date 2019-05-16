@@ -38,7 +38,7 @@ Component({
     let month = date.getMonth()
 
     this.setData({
-      year: year,
+      year,
       month: this.data.months[month]
     })
   }
