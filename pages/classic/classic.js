@@ -22,7 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classicModel.getLatest((res) => {
+    classicModel.getLatest().then((res) => {
       this.setData({
         classic: res,
         laterIndex: res.index,
@@ -59,7 +59,7 @@ Page({
    */
   _updateClassic(nextOrPrevious) {
     let index = this.data.classic.index
-    classicModel.getClassic(index, nextOrPrevious, (res) => {
+    classicModel.getClassic(index, nextOrPrevious).then(res => {
       this._getLikeStatus(res.type, res.id)
       this.setData({
         classic: res,
@@ -70,7 +70,7 @@ Page({
   },
 
   _getLikeStatus(type, arrId) {
-    likeModel.getClassicLikeStatus(type, arrId, (res) => {
+    likeModel.getClassicLikeStatus(type, arrId).then((res) => {
       this.setData({
         likeNums: res.fav_nums,
         likeStatus: res.like_status
@@ -82,7 +82,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -124,6 +124,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log(111);
   }
 })

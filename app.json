@@ -2,7 +2,8 @@
   "pages": [
     "pages/classic/classic",
     "pages/book/book",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/bookDetail/bookDetail"
   ],
   "requiredBackgroundModes": [
     "audio"
@@ -29,13 +30,13 @@
         "selectedIconPath": "./images/tab/classic@highlight.png"
       },
       {
-        "pagePath": "pages/classic/classic",
+        "pagePath": "pages/book/book",
         "text": "书单",
         "iconPath": "./images/tab/book.png",
         "selectedIconPath": "./images/tab/book@highlight.png"
       },
       {
-        "pagePath": "pages/classic/classic",
+        "pagePath": "pages/my/my",
         "text": "喜欢",
         "iconPath": "./images/tab/my.png",
         "selectedIconPath": "./images/tab/my@highlight.png"

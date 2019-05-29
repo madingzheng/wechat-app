@@ -1,31 +1,37 @@
-import {HTTP} from '../until/http'
+import {HTTP} from '../unti/http'
 
 class ClassicModel extends HTTP {
-  getLatest(callBack) {
-    this.request({
-      url: '/classic/latest',
-      success: (res) => {
+
+  /**
+   * 获取期刊
+   */
+  getLatest() {
+    return new Promise((resolve, rej) => {
+      this.request({url: '/classic/latest'}).then((res) => {
         let key = this._getKey(res.index)
         wx.setStorageSync(key, res)
-        callBack(res)
-      }
+        resolve(res)
+      }).catch(reject => {
+        rej(reject)
+      })
     })
   }
 
-  getClassic(index, nextOrPrevious, callBack) {
-    let key = nextOrPrevious === 'next' ? this._getKey(index + 1) : this._getKey(index - 1)
-    let classic = wx.getStorageSync(key)
-    if (!classic) {
-      this.request({
-        url: '/classic/' + index + '/' + nextOrPrevious,
-        success: (res) => {
+  getClassic(index, nextOrPrevious) {
+    return new Promise((resolve, reject) => {
+      let key = nextOrPrevious === 'next' ? this._getKey(index + 1) : this._getKey(index - 1)
+      let classic = wx.getStorageSync(key)
+      if (!classic) {
+        this.request({url: '/classic/' + index + '/' + nextOrPrevious}).then((res) => {
           wx.setStorageSync(key, res)
-          callBack(res)
-        }
-      })
-    } else {
-      callBack(classic)
-    }
+          resolve(res)
+        }).catch((error) => {
+          reject()
+        })
+      } else {
+        resolve(classic)
+      }
+    })
   }
 
   isFirst(index) {

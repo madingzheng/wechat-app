@@ -1,0 +1,13 @@
+<view class="container" bind:tap="toBookDetail">
+	<image src="{{book.image}}" />
+	<view class="description">
+		<text class="title">{{book.title}}</text>
+		<text class="author">{{book.author}}</text>
+		<view class="foot" wx:if="{{showLike}}">
+			<text class="footer">
+        {{book.fav_nums}} 喜欢
+      </text>
+		</view>
+	</view>
+</view>
+
