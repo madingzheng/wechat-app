@@ -35,12 +35,12 @@ class KeywordModel  extends HTTP{
   /**
    * 书籍搜素
    */
-  getBookSearch(q) {
+  getBookSearch(q, start) {
     return this.request({
       url: '/book/search',
       data: {
-        summary: 1,
-        q
+        q:q,
+        start:start
       }
     })
   }

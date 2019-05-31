@@ -1,5 +1,6 @@
 // pages/book/book.js
 import {BookModels} from '../../models/book'
+import {random} from '../../unti/common'
 
 const bookModels = new BookModels
 
@@ -11,7 +12,8 @@ Page({
   data: {
     bookList: [],
     comment: [],
-    searching: true
+    searching: true,
+    more: ''
   },
 
   /**
@@ -80,7 +82,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      more: random(16)
+    })
   },
 
   /**
