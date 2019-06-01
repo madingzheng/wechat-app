@@ -41,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -55,6 +55,19 @@
 					"name": "bookdetail",
 					"pathName": "pages/bookDetail/bookDetail",
 					"query": "id=1120",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "喜欢",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关于",
+					"pathName": "pages/about/about",
 					"scene": null
 				}
 			]

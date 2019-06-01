@@ -1,46 +1,31 @@
-// pages/book/book.js
-import {BookModels} from '../../models/book'
-import {random} from '../../unti/common'
-
-const bookModels = new BookModels
-
+// pages/about/about.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bookList: [],
-    comment: [],
-    searching: false,
-    more: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    bookModels.getHotBookList()
-      .then(res => {
-        this.setData({
-          bookList: res
-        })
-      })
+
   },
 
   /**
-    * 搜索
-    */
-  onSearching(event) {
-    this.setData({
-      searching: true
-    })
-  },
-
-  onCancel() {
-    this.setData({
-      searching: false
-    })
+   * 小程序跳转
+   */
+  toMiniProgram() {
+    wx.navigateToMiniProgram({
+      appId:'wx8ffc97ad5bcccc89',
+      success: (result) => {
+        console.log(result);
+      },
+    });
+      
   },
 
   /**
@@ -82,9 +67,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      more: random(16)
-    })
+
   },
 
   /**

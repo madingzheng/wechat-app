@@ -17,6 +17,38 @@ class ClassicModel extends HTTP {
     })
   }
 
+  /**
+   * 获取我喜欢的期刊
+   */
+  getMyFavor() {
+    return new Promise((resolve, reject) => {
+      this.request({url: '/classic/favor'})
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
+
+  /**
+   * 获取某一期详细信息
+   * @param {类型} type 
+   * @param {期刊id} id 
+   */
+  getClassicOne(type, id) {
+    return new Promise((resolve, reject) => {
+      this.request({url: '/classic/' + type + '/' + id})
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    }) 
+  }
+
   getClassic(index, nextOrPrevious) {
     return new Promise((resolve, reject) => {
       let key = nextOrPrevious === 'next' ? this._getKey(index + 1) : this._getKey(index - 1)

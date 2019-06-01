@@ -37,6 +37,11 @@ class BookModels extends HTTP {
     return this.request({url: '/book/' + bookId + '/favor'})
   }
 
+  /**
+   * 添加评论
+   * @param {书籍id} bookId 
+   * @param {评论内容} content 
+   */
   addBookComment(bookId, content) {
     return this.request({url: '/book/add/short_comment',data: {book_id: bookId, content: content}, method: "POSt"})
   }

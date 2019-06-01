@@ -23,7 +23,9 @@ Component({
     dataArray: [],
     q: "",
     loading: false,
-    loadingMore: true
+    loadingMore: true,
+    loadingCenter: false,
+    noData: false
   },
 
   attached() {
@@ -76,21 +78,29 @@ Component({
     },
     onConfirm(event) {
       const q = event.detail.value || event.detail.text
-      wx.showLoading()
+      this.setData({
+        loadingCenter: true
+      })
       keywordModel.getBookSearch(q, 0).then(res => {
         this.setData({
           dataArray: res.books,
           q,
-          loadingMore: true
+          loadingMore: true,
+          loadingCenter: false
         })
         keywordModel.addToHistory(q)
-        wx.hideLoading()
+        if (res.total === 0) {
+          this.setData({
+            noData: true
+          })
+        }
       })
     },
     onClear(event) {
       this.setData({
         dataArray: [],
-        q: ''
+        q: '',
+        noData: false
       })
     }
   }

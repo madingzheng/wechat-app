@@ -3,7 +3,9 @@
     "pages/classic/classic",
     "pages/book/book",
     "pages/my/my",
-    "pages/bookDetail/bookDetail"
+    "pages/bookDetail/bookDetail",
+    "pages/about/about",
+    "pages/classic-detial/classicDetial"
   ],
   "requiredBackgroundModes": [
     "audio"
@@ -42,5 +44,8 @@
         "selectedIconPath": "./images/tab/my@highlight.png"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx8ffc97ad5bcccc89"
+  ]
 }

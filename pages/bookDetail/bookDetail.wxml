@@ -52,6 +52,9 @@
 		 isLike="{{bookFavor.like_status}}"
 		 count="{{bookFavor.fav_nums}}"
 		/>
+		<v-button openType="share">
+			<image class="share" slot="img" src="../../images/icon/share.png" />
+		</v-button>
 	</view>
 </view>
 <view class="posting-container" wx:else>

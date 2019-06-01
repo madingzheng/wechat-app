@@ -1,12 +1,17 @@
 <view class="container">
 	<view class="header">
 		<v-episode class="episode" index="{{classic.index}}" />
-		<v-like
-		 class="like"
-		 bind:like="onLike"
-		 isLike="{{likeStatus}}"
-		 count="{{likeNums}}"
-		/>
+		<view class="like-container">
+			<v-like
+			 class="like"
+			 bind:like="onLike"
+			 isLike="{{likeStatus}}"
+			 count="{{likeNums}}"
+			/>
+			<v-button openType="share">
+				<image class="share" slot="img" src="../../images/icon/share.png" />
+			</v-button>
+		</view>
 	</view>
 	<v-movie
 	 wx:if="{{classic.type === 100}}"

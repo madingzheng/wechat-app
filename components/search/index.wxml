@@ -14,7 +14,7 @@
 		</view>
 		<view bind:tap="onCancel" class='cancel'>取消</view>
 	</view>
-	<view wx:if="{{!dataArray.length}}">
+	<view wx:if="{{!dataArray.length && !noData}}">
 		<view class="history">
 			<view class="title">
 				<view class="chunk" />
@@ -44,5 +44,9 @@
 			<v-book showLike="{{false}}" book="{{item}}" class="book" />
 		</block>
 	</view>
+
+	<v-loading wx:if="{{loadingCenter}}" />
+	<v-loading wx:if="{{loading}}" />
+	<text wx:if="{{noData}}" class="empty-tip">没有搜索到书籍</text>
 </view>
 

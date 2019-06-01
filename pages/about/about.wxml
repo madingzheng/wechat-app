@@ -1,0 +1,4 @@
+<view class="container">
+	<image bind:tap="toMiniProgram" src="../../images/my/vendor.png" />
+</view>
+

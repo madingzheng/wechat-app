@@ -33,3 +33,16 @@
   position: absolute;
   bottom: 40rpx;
 }
+
+.like-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 10rpx;
+}
+
+.share {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 30rpx;
+}

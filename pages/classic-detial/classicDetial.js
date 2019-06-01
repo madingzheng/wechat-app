@@ -1,8 +1,9 @@
-// pages/book/book.js
-import {BookModels} from '../../models/book'
-import {random} from '../../unti/common'
+// pages/classic/classic.js
+import { ClassicModel } from '../../models/classic'
+import { LikeModel } from '../../models/like'
 
-const bookModels = new BookModels
+const classicModel = new ClassicModel()
+const likeModel = new LikeModel()
 
 Page({
 
@@ -10,36 +11,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookList: [],
-    comment: [],
-    searching: false,
-    more: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    bookModels.getHotBookList()
+    const id = options.id
+    const type = options.type
+    classicModel.getClassicOne(type, id)
       .then(res => {
         this.setData({
-          bookList: res
+          classic: res
         })
       })
   },
 
-  /**
-    * 搜索
-    */
-  onSearching(event) {
-    this.setData({
-      searching: true
-    })
+  onLike: function (event) {
+    let behavior = event.detail.behavior
+    let arrId = this.data.classic.id
+    let type = this.data.classic.type
+    likeModel.like(behavior, arrId, type)
   },
 
-  onCancel() {
-    this.setData({
-      searching: false
+  _getLikeStatus(type, arrId) {
+    likeModel.getClassicLikeStatus(type, arrId).then((res) => {
+      this.setData({
+        likeNums: res.fav_nums,
+        likeStatus: res.like_status
+      })
     })
   },
 
@@ -82,9 +83,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      more: random(16)
-    })
+
   },
 
   /**
